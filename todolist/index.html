@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>to-do list</h1>
+      <form>
+        <input type="text" class="input" placeholder="입력해주세요." />
+        <button class="add">추가하기</button>
+      </form>
+      <ul class="list"></ul>
+    </div>
+
+    <script>
+      const form = document.getElementsByTagName("form")[0];
+      const input = document.getElementsByTagName("input")[0];
+      const list = document.getElementsByClassName("list")[0];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (input.value !== "") {
+          const item = document.createElement("li");
+          list.appendChild(item);
+          item.textContent = input.value;
+          input.value = ""; //입력필드 초기화
+          const remove = document.createElement("button");
+          item.appendChild(remove);
+          remove.textContent = "삭제";
+          remove.style.marginLeft = "10px";
+          remove.addEventListener("click", () => {
+            item.remove();
+          });
+        } else {
+          alert("내용을 입력하세요.");
+        }
+      });
+
+      // 과제 삭제버튼 넣기
+      // const input = document.querySelector(".input");
+      // const btn = document.querySelector(".add");
+      // btn.addEventListener("click", function () {
+      //   if (input.value !== "") {
+      //     const list = document.querySelector(".list");
+      //     const item = document.createElement("li");
+      //     list.appendChild(item);
+      //     item.textContent = input.value;
+      //     input.value = "";
+      //     const close = document.createElement("button");
+      //     item.appendChild(close);
+      //     close.textContent = "삭제";
+      //     close.addEventListener("click", function (event) {
+      //       const remove = event.target.parentElement;
+      //       item.remove();
+      //     });
+      //   } else {
+      //     alert("내용을 입력하세요.");
+      //   }
+      // });
+
+      //쌤이랑 같이 한 코드
+      // const input = document.querySelector(".input");
+      //       const btn = document.querySelector(".add");
+
+      //       btn.addEventListener("click", function () {
+      //         const list = document.querySelector(".list");
+      //         const item = document.createElement("li");
+      //         input.value;
+      //         item.textContent = input.value;
+      //         list.appendChild(item);
+      //       });
+    </script>
+  </body>
+</html>
